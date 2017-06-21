@@ -1,4 +1,3 @@
 class FriendRequest < ApplicationRecord
-  belongs_to :user, null: false
-
+  belongs_to :user
 end
