@@ -46,19 +46,19 @@ ActiveRecord::Schema.define(version: 20170621185442) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ownerships", force: :cascade do |t|
+    t.bigint "owner_id", null: false
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_ownerships_on_game_id"
+    t.index ["owner_id"], name: "index_ownerships_on_owner_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "user_games", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "game_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_user_games_on_game_id"
-    t.index ["user_id"], name: "index_user_games_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
