@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
-  has_many :games_tags
-  has_many :tags, through: :games_tags
+  has_many :game_tags
+  has_many :tags, through: :game_tags
   has_many :ownerships
   has_many :owners, through: :ownerships, source: 'owner'
   has_many :votes, as: :votable
