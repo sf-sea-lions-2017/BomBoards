@@ -3,7 +3,7 @@
   <h2>Most Popular Games</h2>
     <% sorted_games = @games.sort_by {|game| game.number_of_owners}.reverse %>
     <% sorted_games.each do |game| %>
-   <a href='/' class='headline'><%= game.name %></a><span class='owners-head'> <%= game.number_of_owners %> owners</span><br>
+   <a href="/games/<%= game.id %>" class='headline'><%= game.name %></a><span class='owners-head'> <%= game.number_of_owners %> owners</span><br>
       
       <div class='detail'>
         <div>
