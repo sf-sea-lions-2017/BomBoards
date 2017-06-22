@@ -38,7 +38,6 @@ class User < ApplicationRecord
     pending_friends | pending_friend_requests
   end
 
-
 end
 
 # def self.collection_rating

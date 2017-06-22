@@ -4,8 +4,8 @@ class FriendshipsController < ApplicationController
       flash[:notice] = "You've already sent a request to this user"
       redirect_back(fallback_location: root_path)
     else
-      # @friendship = current_user.friendships.new(user_id: params[:user_id], friend_id: params[:friend_id])
-      @friendship = Friendship.new(user_id: params[:user_id], friend_id: params[:friend_id])
+      @friendship = current_user.friendships.new(user_id: params[:user_id], friend_id: params[:friend_id])
+      # @friendship = Friendship.new(user_id: params[:user_id], friend_id: params[:friend_id])
       if @friendship.save
         flash[:notice] = "Friend request sent."
         redirect_back(fallback_location: root_path)
@@ -37,11 +37,11 @@ class FriendshipsController < ApplicationController
   end
 
   private
-    def friends?
-      Friendship.find_by(user_id: params[:user_id], friend_id: params[:friend_id]) || Friendship.find_by(user_id: params[:friend_id], friend_id: params[:user_id])
-    end
-
     # def friends?
-    #   Friendship.find_by(user: current_user, friend_id: params[:friend_id]) || Friendship.find_by(user_id: params[:friend_id], friend: current_user)
+    #   Friendship.find_by(user_id: params[:user_id], friend_id: params[:friend_id]) || Friendship.find_by(user_id: params[:friend_id], friend_id: params[:user_id])
     # end
+
+    def friends?
+      Friendship.find_by(user: current_user, friend_id: params[:friend_id]) || Friendship.find_by(user_id: params[:friend_id], friend: current_user)
+    end
 end

@@ -1,24 +1,16 @@
 <div class='page-wrapper'>
-  <h1><%= @user.username %>'s profile</h1>
+
+  <% if @user != current_user %>
+    <h1><%= @user.username %>'s profile</h1>
+  <% else %>
+    <h1>My Profile</h1>
+  <% end %>
 	Located in: <%= @user.city %>, <%= @user.state %>
-
-
-
-
-
-  <div >
-  	<h1><p>
-  		
-  	</p><p>
-
-
-  	</p></h1>
+  <div>
     <h2>Game Collection</h2>
 
     <% @user.games.each do |game| %>
       <span class='headline'><a href="/games/<%= game.id %>"><%= game.name %></a></span><br><br>
-
-
     <% end %>
   </div>
 
@@ -28,13 +20,7 @@
 <% end %>
 
 <div>
-  <% if @user != User.find_by(id: 1) %>
-    <h1><%= @user.username %>'s profile</h1>
-  <% else %>
-    <h1>My profile</h1>
-  <% end %>
-
-  <% if @user != User.find_by(id: 1) %>
+  <% if @user != current_user && user_signed_in?%>
     <%= link_to "Add Friend", friendships_path(user_id: 1, friend_id: @user.id), method: :post %>
   <% end %>
 </div>
@@ -49,7 +35,7 @@
 </div>
 
 <div>
-  <% if @user == User.find_by(id: 2) %>
+  <% if @user == current_user %>
   <h2>Pending Friend Requests</h2>
   <ul>
       <% @user.requests.each do |request| %>
