@@ -1,0 +1,33 @@
+<div class='page-wrapper'>
+  <div class='section'>
+  <h2>Most Popular Games</h2>
+    <% sorted_games = @games.sort_by {|game| game.number_of_owners}.reverse %>
+    <% sorted_games.each do |game| %>
+   <a href='/' class='headline'><%= game.name %></a><span class='owners-head'> <%= game.number_of_owners %> owners</span><br>
+      
+      <div class='detail'>
+        <div>
+          Top Owners:
+          <% game.owners.each do |owner| %>
+          <span class='detail'><%= owner.username %>   </span>
+          <% end %>  
+        </div>
+      </div>    
+     
+      </p>
+
+    <% end %>
+  </div>
+
+
+  <div class='section'>
+    <h2>Largest Collections</h2>
+    <% top_collections = @user.sort_by {|user| user.games.count}.reverse %>
+    <% top_collections.each do |user| %>
+      <span class='detail'><%= user.username %> -- <%= user.games.count %> games</span><br>
+
+
+    <% end %>
+  </div>
+
+</div>
