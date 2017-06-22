@@ -1,7 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all.owners.order(:created_at)
-    # @number_of_owners = @games.owners.order(:created_at)
+    @games = Game.all
   end
 
   def new
