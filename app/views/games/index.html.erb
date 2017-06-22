@@ -1,15 +1,13 @@
 <h1>Welcome to BomBoards!</h1>
 
 <div>
-  <% @games.each do |game| %>
-    <p><%= game.name %>
+  <% sorted_games = @games.sort_by {|game| game.number_of_owners}.reverse %>
+  <% sorted_games.each do |game| %>
+    <p><strong><%= game.name %></strong>
     owned by<br>
-      <% game.owners.each do |owner| %>
+    <% game.owners.each do |owner| %>
       <%= owner.username %><br>
-      <% end %>      
-    <br>
-    Number of owners: <%= game.number_of_owners %>
+    <% end %>
     </p>
-
   <% end %>
 </div>
