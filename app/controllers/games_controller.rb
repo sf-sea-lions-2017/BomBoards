@@ -1,5 +1,5 @@
 def index
-
+  
 end
 
 def new
