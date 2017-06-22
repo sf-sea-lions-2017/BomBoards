@@ -1,37 +1,39 @@
-def index
+class UsersController < ApplicationController
+  def index
 
-end
+  end
 
-def new
+  def new
 
-end
+  end
 
-def show
+  def show
 
-end
+  end
 
-# def edit
-#
-# end
-#
-# def update
-#
-# end
+  # def edit
+  #
+  # end
+  #
+  # def update
+  #
+  # end
 
-def destroy
+  def destroy
 
-end
+  end
 
-def add_game
+  def add_game
 
-end
+  end
 
-def remove_game
+  def remove_game
 
-end
+  end
 
-def add_friend
-  # @friend = FriendRequest.new(params[..blah])
-  # @friend.approved = true
+  def add_friend
+    # @friend = FriendRequest.new(params[..blah])
+    # @friend.approved = true
 
+  end
 end

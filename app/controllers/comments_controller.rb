@@ -1,23 +1,25 @@
-# def index
-#
-# end
+class CommentsController < ApplicationController
+  # def index
+  #
+  # end
 
-def new
+  def new
 
-end
+  end
 
-# def show
-#
-# end
+  # def show
+  #
+  # end
 
-def edit
+  def edit
 
-end
+  end
 
-def update
+  def update
 
-end
+  end
 
-def destroy
+  def destroy
 
+  end
 end
