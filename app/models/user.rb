@@ -2,8 +2,8 @@ class User < ApplicationRecord
   has_many :ownerships, foreign_key: :owner_id
   has_many :games, through: :ownerships
 
-  has_many :friend_requests
-  # has_many :pending_friend_requests, class_name: 'FriendRequest', foreign_key: 'friend_id'
+  has_many :friendships
+  has_many :received_friendships, class_name: "Friendship", foreign_key: "friend_id"
 
   has_many :own_comments, class_name: 'Comment'
   has_many :remarks, as: :commentable, class_name: 'Comment'
@@ -13,5 +13,5 @@ class User < ApplicationRecord
 end
 
 # def self.collection_rating
-#   self.ratings.count  
+#   self.ratings.count
 # end
