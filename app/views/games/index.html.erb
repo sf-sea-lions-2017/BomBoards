@@ -13,9 +13,7 @@
           <% end %>  
         </div>
       </div>    
-     
       </p>
-
     <% end %>
   </div>
 
@@ -25,9 +23,6 @@
     <% top_collections = @user.sort_by {|user| user.games.count}.reverse %>
     <% top_collections.each do |user| %>
       <span class='detail'><a href="/users/<%= user.id %>"><%= user.username %></a> &nbsp;— <%= user.games.count %> games</span><br>
-
-
     <% end %>
   </div>
-
 </div>

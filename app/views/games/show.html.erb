@@ -5,5 +5,12 @@ Duration: <%= @game.playtime %> minutes <br>
 <%= @game.description %>
 <p>
 
+<%= render 'games/form', :target => @game %>
 
-
+<% if @game.comments %>
+<ul>
+  <% @game.comments.each do |comment| %>
+    <li><%= comment.body %></li>
+  <% end %>
+</ul>
+<% end %>
