@@ -7,6 +7,7 @@
   <% end %>
 	Located in: <%= @user.city %>, <%= @user.state %>
   <div>
+
     <h2>Game Collection</h2>
 
     <% @user.games.each do |game| %>
@@ -20,8 +21,8 @@
 <% end %>
 
 <div>
-  <% if @user != current_user && user_signed_in?%>
-    <%= link_to "Add Friend", friendships_path(user_id: 1, friend_id: @user.id), method: :post %>
+  <% if @user != current_user && user_signed_in? %>
+    <%= link_to "Add Friend", friendships_path(user: current_user, friend_id: @user.id), method: :post %>
   <% end %>
 </div>
 
