@@ -23,3 +23,33 @@
   </div>
 
 </div>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<div>
+  <h1><%= @user.username %>'s profile</h1>
+  <%= link_to "Add Friend", friendships_path(user_id: 1, friend_id: @user.id), method: :post %>
+</div>
+
+<div>
+  <h1>Friend's List</h1>
+    <ul>
+      <% @user.friends.each do |friend| %>
+        <li><%= friend.username %></li>
+      <% end %>
+    </ul>
+
+<div>
+  <h2>Pending Friend Requests</h2>
+  <ul>
+      <% @user.pending_friends.each do |request| %>
+      <li>
+        <%= request.username %> wants to be friends!
+        <%= link_to 'Accept', friendship_path(id: request.id), method: "put" %>
+
+      </li>
+      <% end %>
+
+  </ul>
+</div>
