@@ -14,12 +14,18 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find_by(id: params[:id])
     @friendship.update_attributes(accepted: true)
     if @friendship.save
+      flash[:notice] = "Friend request accepted"
       redirect_back(fallback_location: root_path)
     else
+      flash[:notice] = "Friend request not accepted"
       redirect_back(fallback_location: root_path)
     end
   end
 
   def destroy
+    @friendship = Friendship.find_by(id: params[:id])
+    @friendship.destroy
+    flash[:notice] = "Declined friend request"
+    redirect_back(fallback_location: root_path)
   end
 end
