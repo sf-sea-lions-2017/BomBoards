@@ -1,7 +1,9 @@
-def upvote
+class VotesController < ApplicationController
+  def upvote
 
-end
+  end
 
-def upvote_collection
+  def upvote_collection
 
+  end
 end
