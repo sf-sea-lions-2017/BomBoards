@@ -13,7 +13,7 @@ max_users = 10
 users_needed = max_users - User.count
 
 users_needed.times do
-  User.create(username: Faker::Internet.user_name, email: Faker::Internet.safe_email, location: Faker::Address.state, password_encrypted: 'password')
+  User.create(username: Faker::Internet.user_name, email: Faker::Internet.safe_email, state: Faker::Address.state, city: Faker::Address.city, password: 'password')
 end
 
 
@@ -34,7 +34,6 @@ max_ownerships = 30
 ownerships_needed = max_ownerships - Ownership.count
 
 
-ownerships_needed.times do 
+ownerships_needed.times do
 	Ownership.find_or_create_by(owner: User.all.sample, game: Game.all.sample)
 end
-
