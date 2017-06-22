@@ -1,5 +1,10 @@
 <div class='header'>
 	<span class='header-font'><a href='/'><%= image_tag "/assets/bomb200.png" %></a>BomBoards!</span>
-	
-	<span  class='register-font'><a href='/'>Login</a> | <A href='/'>Register</a> </span>
+
+	<span  class='register-font'>
+		<% if user_signed_in? %>
+	  	<a href='/'>Login</a> | <A href='/'>Register</a> </span>
+		<% else user_signed_in? %>
+			<p>Hello, <%= current_user.username %></p> <%= link_to('Logout', destroy_user_session_path, method: :delete) %> </span>
+		<% end %>
 </div>
