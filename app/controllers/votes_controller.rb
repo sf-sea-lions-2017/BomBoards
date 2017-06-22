@@ -6,4 +6,6 @@ class VotesController < ApplicationController
   def upvote_collection
 
   end
+
 end
+
