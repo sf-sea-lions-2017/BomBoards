@@ -1,3 +1,20 @@
-<div>
+<div class='page-wrapper'>
   <h1><%= @user.username %>'s profile</h1>
+Located in: <%= @user.location %>
+<p>
+	
+
+</p>
+
+
+  <div >
+    <h2>Game Collection</h2>
+    
+    <% @user.games.each do |game| %>
+      <span class='headline'><a href="/games/<%= game.id %>"><%= game.name %></a></span><br><br>
+
+
+    <% end %>
+  </div>
+
 </div>
