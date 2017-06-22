@@ -33,6 +33,8 @@ Game.find_or_create_by(name: "Apples to Apples", number_of_players: "4 - 10" , p
 max_ownerships = 30
 ownerships_needed = max_ownerships - Ownership.count
 
+
 ownerships_needed.times do 
 	Ownership.find_or_create_by(owner: User.all.sample, game: Game.all.sample)
 end
+
