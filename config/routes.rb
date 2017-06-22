@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/votes', to: 'user#upvote_collection'
 
   post '/users', to: 'user#add_game'
-  destroy '/users', to: 'user#remove_game'
+  delete '/users', to: 'user#remove_game'  #issue here with 'destroy', that's the path but the verb is 'delete'
   post '/users', to: 'user#add_friend'
+
 end
