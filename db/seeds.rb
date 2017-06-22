@@ -34,5 +34,5 @@ max_ownerships = 30
 ownerships_needed = max_ownerships - Ownership.count
 
 ownerships_needed.times do 
-	Ownership.create(owner: User.all.sample, game: Game.all.sample)
+	Ownership.find_or_create_by(owner: User.all.sample, game: Game.all.sample)
 end
