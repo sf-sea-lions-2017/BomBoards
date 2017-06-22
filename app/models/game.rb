@@ -6,5 +6,12 @@ class Game < ApplicationRecord
   has_many :votes, as: :votable
   has_many :comments, as: :commentable
 
-  validates :name, :description, :number_of_players, :instructions, :playtime, presence: true
+  validates :name, :description, :number_of_players, :playtime, presence: true
+
+  def number_of_owners
+    self.owners.length
+  end
+
+
+
 end
