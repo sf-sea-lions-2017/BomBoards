@@ -1,15 +1,8 @@
 <h1>Welcome to BomBoards Bruh!!!</h1>
 
 <div>
-  <% @games.each do |game| %>
-    <p><%= game.name %>
-    owned by<br>
-      <% game.owners.each do |owner| %>
-      <%= owner.username %><br>
-      <% end %>      
-    </p>
     <p>Organized by popularity:
-      <% @number_of_owners.each do |owner| %>
+      <% @games.each do |owner| %>
       <%= owner.username %>
       <% end %>
     </p>
