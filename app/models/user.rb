@@ -7,10 +7,11 @@ class User < ApplicationRecord
 
   #all requests received by the user
   has_many :received_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :requests, -> { where accepted: false }, class_name: "Friendship", foreign_key: "friend_id"
 
   #friend requests received by the user
   has_many :accepted_friends, -> { where(friendships: { accepted: true}) }, through: :received_friendships, source: 'user'
-  has_many :pending_friends, -> { where(friendships: { accepted: false}) }, through: :received_friendships, source: 'user'
+  has_many :pending_friends, -> { where(friendships: { accepted: false}) }, through: :requests, source: 'user'
 
   #friend requests sent by the user
   has_many :accepted_friend_requests, -> { where(friendships: { accepted: true}) }, through: :friendships, source: 'friend'
