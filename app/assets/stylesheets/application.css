@@ -35,6 +35,11 @@
 
 }
 
+.section{
+	float: left;
+	margin: 0px 40px 0px 40px;
+}
+
 .headline{
 	font-size: 18px;
 }
