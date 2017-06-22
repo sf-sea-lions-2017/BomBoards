@@ -1,13 +1,19 @@
-<h1>Welcome to BomBoards!</h1>
-
 <div>
   <% sorted_games = @games.sort_by {|game| game.number_of_owners}.reverse %>
   <% sorted_games.each do |game| %>
-    <p><strong><%= game.name %></strong>
-    owned by<br>
-    <% game.owners.each do |owner| %>
-      <%= owner.username %><br>
-    <% end %>
+ <a href='/' class='headline'><%= game.name %></a><span class='owners-head'> <%= game.number_of_owners %> owners</span><br>
+    
+    <div class='detail'>
+      <div>
+        Top Owners:
+        <% game.owners.each do |owner| %>
+        <span class='detail'><%= owner.username %>   </span>
+        <% end %>  
+      </div>
+    </div>    
+   
     </p>
+
   <% end %>
 </div>
+
