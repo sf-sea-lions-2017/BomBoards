@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  has_many :ownerships
+  has_many :ownerships, foreign_key: :owner_id
   has_many :games, through: :ownerships
 
   has_many :friend_requests
+  # has_many :pending_friend_requests, class_name: 'FriendRequest', foreign_key: 'friend_id'
 
   has_many :own_comments, class_name: 'Comment'
   has_many :remarks, as: :commentable, class_name: 'Comment'
