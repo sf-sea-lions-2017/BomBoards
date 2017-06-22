@@ -23,8 +23,15 @@
 .header-font{
 	font-family: helvetica;
 	font-color: #cccccc;
+	font-size: 84px;
 }
 
+.register-font{
+	font-family: helvetica;
+	font-color: #cccccc;
+	font-size: 14px;
+	float: right;
+}
 
 .container{
 
