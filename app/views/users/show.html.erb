@@ -3,7 +3,12 @@
 <% end %>
 
 <div>
-  <h1><%= @user.username %>'s profile</h1>
+  <% if @user != User.find_by(id: 1) %>
+    <h1><%= @user.username %>'s profile</h1>
+  <% else %>
+    <h1>My profile</h1>
+  <% end %>
+
   <% if @user != User.find_by(id: 1) %>
     <%= link_to "Add Friend", friendships_path(user_id: 1, friend_id: @user.id), method: :post %>
   <% end %>
@@ -19,7 +24,7 @@
 </div>
 
 <div>
-  <% if @user == User.find_by(id: 1) %>
+  <% if @user == User.find_by(id: 2) %>
   <h2>Pending Friend Requests</h2>
   <ul>
       <% @user.requests.each do |request| %>
