@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'events/create'
+
+  get 'events/show'
+
+  get 'events/update'
+
+  get 'events/destroy'
+
   devise_for :users
 
   resources :friendships, only: [:create, :update, :destroy]
