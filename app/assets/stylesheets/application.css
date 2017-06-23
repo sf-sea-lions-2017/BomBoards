@@ -21,8 +21,8 @@
 
 .header-font{
 	font-family: helvetica;
-	font-color: #cccccc;
 	font-size: 84px;
+  color: #FF1905;
 }
 
 .register-font{
@@ -36,7 +36,7 @@
 	margin-left: 80px;
 	margin-right: 80px;
 	font-family: helvetica;
-	background-color: #FAFAFA;
+	/*background-color: #FAFAFA;*/
 	max-width: 60%;
 	margin: auto;
 }
@@ -53,6 +53,7 @@
 
 .game-show-headline{
 	font-size: 22px;
+  color: #FF1905;
 }
 
 .detail{
@@ -66,7 +67,7 @@
 
 .page-wrapper{
 	margin: 10px 10px 10px 10px;
-	background-color: #FAFAFA;
+	/*background-color: #FAFAFA;*/
 	
 }
 
@@ -122,6 +123,7 @@ a:clicked {
   
 .featured {
 	font-size: 16px;
+  color: #FF1905;
 }
 
 .featured-title {
@@ -130,5 +132,21 @@ a:clicked {
 }
 
 .sortbar{
-	background-color: #0080ff;
+	background-color: #B1E83D;
+}
+
+body {
+  background: linear-gradient(to bottom, #e4f5fc 0%,#bfe8f9 23%,#9fd8ef 41%,#2ab0ed 100%);
+}
+
+.alert {
+  font-color: #E80303;
+}
+
+.notice {
+  font-color: #E89F0D;
+}
+
+h2, h1 {
+  color: #FF1905;
 }
