@@ -1,5 +1,12 @@
 <div class='page-wrapper'>
 
+<div class='sortbar'>
+
+  <%= link_to "Popular", games_path(:sort => "popular") %>
+
+  <%= link_to "Most Owners", games_path(:sort => "owned") %>
+
+</div>
 
   <div class="dropdown">
     <button class="dropbtn"><strong>View by Tag</strong></button>
