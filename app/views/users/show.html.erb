@@ -8,17 +8,22 @@
 	Located in: <%= @user.city %>, <%= @user.state %>
   <div>
 
-    <h2>Game Collection</h2>
+    <h2>Game Collection - <%= @user.collection_rating %> likes</h2>
+
+    <% if @user != current_user && user_signed_in? %>
+      <%= link_to "Like #{@user.username}'s collection", votes_path(votable_id: @user.id, votable_type: @user.class), method: :post  %><br><br><br>
+    <% elsif !user_signed_in? %>
+      <p>Please login to like <%= @user.username %>'s collection</p><br><br><br>
+    <% end %>
+
 
     <% @user.games.each do |game| %>
       <span class='headline'><a href="/games/<%= game.id %>"><%= game.name %></a></span><br><br>
     <% end %>
-  </div>
+
+      </div>
 
 </div>
-<!-- # <% if flash[:notice] %>
-#   <div class="notice"><%= flash[:notice] %></div>
-# <% end %> -->
 
 <div>
   <% if @user != current_user && user_signed_in? %>

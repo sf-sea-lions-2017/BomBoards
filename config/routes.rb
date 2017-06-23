@@ -7,10 +7,7 @@ Rails.application.routes.draw do
   get 'games/index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, :games, :comments
-
-  post '/votes', to: 'game#upvote'
-  post '/votes', to: 'user#upvote_collection'
+  resources :users, :games, :comments, :votes, :ownerships
 
   post '/users', to: 'user#add_game'
 
