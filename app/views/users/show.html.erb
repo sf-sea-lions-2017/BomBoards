@@ -1,0 +1,70 @@
+<div class='page-wrapper'>
+  <div>
+  <% if @user != current_user %>
+    <h1><%= @user.username %>'s profile</h1>
+  <% else %>
+    <h1>My Profile</h1>
+  <% end %>
+	Located in: <%= @user.city %>, <%= @user.state %>
+
+  <h2>Game Collection - <%= @user.collection_rating %> likes</h2>
+
+  <% if @user != current_user && user_signed_in? %>
+    <%= link_to "Like #{@user.username}'s collection", votes_path(votable_id: @user.id, votable_type: @user.class), method: :post  %><br><br><br>
+  <% elsif !user_signed_in? %>
+    <p>Please login to like <%= @user.username %>'s collection</p><br><br><br>
+  <% end %>
+
+  <% @user.games.each do |game| %>
+    <span class='headline'><a href="/games/<%= game.id %>"><%= game.name %></a></span><br><br>
+  <% end %>
+
+  </div>
+
+</div>
+
+<div>
+  <% if !user_signed_in? %>
+    <p>Sign in to be friends with <%= @user.username %></p>
+  <% elsif current_user.friends.include?(@user) && user_signed_in?%>
+    <p>You are friends with <%= @user.username %></p>
+  <% elsif @user != current_user && user_signed_in? && !current_user.friends.include?(@user) %>
+    <%= link_to "Add Friend", friendships_path(user: current_user, friend_id: @user.id), method: :post %>
+  <% end %>
+</div>
+
+<br>
+
+<% if @user != current_user && user_signed_in? %>
+  <%= render 'users/form', :target => @user %>
+<% end %>
+
+<% if @user.remarks %>
+<ul>
+  <%= render 'comments/list_comments', :comments => @user.remarks %>
+</ul>
+<% end %>
+
+<div>
+  <h1>Friend's List</h1>
+    <ul>
+      <% @user.friends.each do |friend| %>
+        <li><%= friend.username %></li>
+      <% end %>
+    </ul>
+</div>
+
+<div>
+  <% if @user == current_user %>
+  <h2>Pending Friend Requests</h2>
+  <ul>
+      <% @user.requests.each do |request| %>
+      <li>
+        <%= request.user.username %> wants to be friends!
+        <%= link_to 'Accept', friendship_path(id: request.id), method: "put" %>
+        <%= link_to 'Decline', friendship_path(id: request.id), method: "delete" %>
+      </li>
+      <% end %>
+  </ul>
+  <% end %>
+</div>

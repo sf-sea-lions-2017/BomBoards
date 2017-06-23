@@ -1,0 +1,12 @@
+<%= form_for @comment do |f| %>
+  <p>
+    <%= f.label :collection_comment_form, "Comment on this Collection:" %><br>
+    <%= f.text_area :body %>
+    <%= f.hidden_field :commentable_id, :value => target.id %>
+    <%= f.hidden_field :commentable_type, :value => target.class %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
