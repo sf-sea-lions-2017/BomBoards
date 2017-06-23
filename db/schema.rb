@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623140727) do
+ActiveRecord::Schema.define(version: 20170623190340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20170623140727) do
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.bigint "host_id"
+    t.bigint "played_game_id"
+    t.string "title"
+    t.string "location"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["host_id"], name: "index_events_on_host_id"
+    t.index ["played_game_id"], name: "index_events_on_played_game_id"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -63,6 +75,15 @@ ActiveRecord::Schema.define(version: 20170623140727) do
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_ownerships_on_game_id"
     t.index ["owner_id"], name: "index_ownerships_on_owner_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "attendee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attendee_id"], name: "index_reservations_on_attendee_id"
+    t.index ["event_id"], name: "index_reservations_on_event_id"
   end
 
   create_table "tags", force: :cascade do |t|

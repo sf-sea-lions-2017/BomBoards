@@ -28,6 +28,9 @@ class User < ApplicationRecord
   has_many :own_votes, class_name: 'Vote'
   has_many :ratings, as: :votable, class_name: 'Vote'
 
+  has_many :hosted_events, class_name: 'Event', foreign_key: "host_id"
+
+
   #gets all friends
   def friends
     accepted_friends | accepted_friend_requests
