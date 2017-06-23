@@ -1,10 +1,17 @@
-<span class='game-show-headline'><img src=<%= @game.image_link%> style="width:25%;height:25%;"><b><%= @game.name %></b> - <%= @game.likes %> likes</span>
-<% if @game.tags.any? %>
-  <% @game.tags.each do |tag| %>
-    <span class='tag'><%= tag.name %></span>
+<div>
+  <span class='game-show-headline'><img src=<%= @game.image_link%> style="width:25%;height:25%;"><span class="middle"><%= @game.name %> - <%= @game.likes %> likes</span></span>
+    <% if user_signed_in? %>
+    <span class="btn right"><%= link_to 'Like this Game', votes_path(votable_id: @game.id, votable_type: @game.class), method: :post  %></span>
+  <% else %>
+    <p>Please log in to like or comment on this game</p>
   <% end %>
-<% end %>
-<br>
+  <% if @game.tags.any? %>
+    <% @game.tags.each do |tag| %>
+      <span class='tag middle'><%= tag.name %></span>
+    <% end %>
+  <% end %>
+  <br>
+</div>
 
 <% if !user_signed_in? %>
   <p>Please sign in to add this game to your collection</p>
@@ -13,7 +20,6 @@
   <p><%= link_to 'Add it to your collection', ownerships_path(game_id: @game.id), method: :post %></p><br>
   <p>Don't own this Game?</p>
   <p><a href=<%= @game.buy_link %>>Buy it here</a></p>
-
 <% elsif current_user.games.include?(@game) %>
   <p>You already own <%= @game.name %></p><br><br>
 <% end %>
@@ -33,12 +39,6 @@ Duration: <%= @game.playtime %> minutes <br>
 <p><%= @game.description %></p>
 
 <br>
-
-<% if user_signed_in? %>
-  <%= link_to 'Like this Game', votes_path(votable_id: @game.id, votable_type: @game.class), method: :post  %>
-<% else %>
-  <p>Please log in to like or comment on this game</p>
-<% end %>
 
 <% if @game.comments %>
 <ul>
