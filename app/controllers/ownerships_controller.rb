@@ -1,7 +1,7 @@
 class OwnershipsController < ApplicationController
   def create
     if owned?
-      flash[:notice] = "You already own this game"
+      flash[:notice] = "You own this game"
     else
       @ownership = current_user.ownerships.new(game_id: params[:game_id])
       if @ownership.save
