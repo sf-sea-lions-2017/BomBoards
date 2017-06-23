@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170623140727) do
 
   # These are extensions that must be enabled in order to support this database
@@ -52,7 +53,9 @@ ActiveRecord::Schema.define(version: 20170623140727) do
     t.string "playtime", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
     t.string "image_link"
+    t.string "buy_link"
   end
 
   create_table "ownerships", force: :cascade do |t|
