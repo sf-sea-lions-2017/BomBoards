@@ -6,7 +6,6 @@
 <% end %>
 <br>
 
-
 <% if !user_signed_in? %>
   <p>Please sign in to add this game to your collection</p>
 <% elsif !current_user.games.include?(@game) && user_signed_in? %>
@@ -19,19 +18,16 @@
 <% if @friends_with_game %>
   <ul>
   <% @friends_with_game.each do |friend| %>
-    <li><%= friend.username %> owns <%= @game.name %></li>
+    <li><a href="/users/<%= friend.id %>"><%= friend.username %></a> owns <%= @game.name %></li>
   <% end %>
   </ul>
 <% end %>
 <p></p>
 
-
 Players: <%= @game.number_of_players %> players <br>
 Duration: <%= @game.playtime %> minutes <br>
-<p>
-<%= @game.description %>
-<p>
 
+<p><%= @game.description %></p>
 
 <br>
 
@@ -44,9 +40,7 @@ Duration: <%= @game.playtime %> minutes <br>
 <% if @game.comments %>
 <ul>
   <!-- will need conversion of time zone for stringified time -->
-  <% @game.comments.each do |comment| %>
-    <li><%= comment.body %> - <%= comment.user.username %> -  <%= comment.created_at.strftime("%l:%M %p - %e, %b %Y") %></li>
-  <% end %>
+  <%= render 'comments/list_comments', :comments => @game.comments %>
 </ul>
 <% end %>
 

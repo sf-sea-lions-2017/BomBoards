@@ -4,10 +4,6 @@ class GamesController < ApplicationController
     @user = User.all
   end
 
-  def new
-
-  end
-
   def show
     @game = Game.find(params[:id])
     @comment = Comment.new
@@ -16,16 +12,5 @@ class GamesController < ApplicationController
     end
   end
 
-  # def edit
-  #
-  # end
-  #
-  # def update
-  #
-  # end
-
-  # def destroy
-  #
-  # end
 end
 

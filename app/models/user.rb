@@ -53,6 +53,3 @@ class User < ApplicationRecord
   end
 end
 
-# def self.collection_rating
-#   self.ratings.count
-# end
