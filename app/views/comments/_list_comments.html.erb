@@ -1,5 +1,9 @@
 <% if comments %>
   <% comments.each do |comment| %>
-    <li><%= comment.body %> - <%= comment.user.username %> -  <%= comment.created_at.strftime("%l:%M %p - %e, %b %Y") %></li>
+    <li><%= comment.body %> - <%= comment.user.username %> -  <%= comment.created_at.strftime("%l:%M %p - %e, %b %Y") %>
+    <% if comment.user == current_user %>
+      <%= link_to('Edit', edit_comment_path(comment.id)) %>
+    <% end %>
+    </li>
   <% end %>
 <% end %>
