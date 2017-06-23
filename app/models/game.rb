@@ -12,6 +12,8 @@ class Game < ApplicationRecord
     self.owners.length
   end
 
-
+  def likes
+    self.votes.count
+  end
 
 end
