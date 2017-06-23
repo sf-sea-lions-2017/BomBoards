@@ -33,14 +33,18 @@
 
 <br>
 
-<% if @user.id != current_user.id && user_signed_in? %>
+<% if @user != current_user && user_signed_in? %>
   <%= render 'users/form', :target => @user %>
 <% end %>
 
 <% if @user.remarks %>
 <ul>
   <% @user.remarks.each do |remark| %>
-    <li><%= remark.body %> - <%= remark.user.username %> -  <%= remark.created_at.strftime("%l:%M %p - %e, %b %Y") %></li>
+    <li><%= remark.body %> - <%= remark.user.username %> -  <%= remark.created_at.strftime("%l:%M %p - %e, %b %Y") %>
+    <% if remark.user == current_user %>
+      <%= link_to('Edit', edit_comment_path(remark.id)) %>
+    <% end %>
+  </li>
   <% end %>
 </ul>
 <% end %>
