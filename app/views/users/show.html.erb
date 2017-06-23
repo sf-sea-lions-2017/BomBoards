@@ -16,15 +16,29 @@
   </div>
 
 </div>
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+<!-- # <% if flash[:notice] %>
+#   <div class="notice"><%= flash[:notice] %></div>
+# <% end %> -->
 
 <div>
   <% if @user != current_user && user_signed_in? %>
     <%= link_to "Add Friend", friendships_path(user: current_user, friend_id: @user.id), method: :post %>
   <% end %>
 </div>
+
+<br>
+
+<% if @user.id != current_user.id && user_signed_in? %>
+  <%= render 'users/form', :target => @user %>
+<% end %>
+
+<% if @user.remarks %>
+<ul>
+  <% @user.remarks.each do |remark| %>
+    <li><%= remark.body %> - <%= remark.user.username %> -  <%= remark.created_at.strftime("%l:%M %p - %e, %b %Y") %></li>
+  <% end %>
+</ul>
+<% end %>
 
 <div>
   <h1>Friend's List</h1>

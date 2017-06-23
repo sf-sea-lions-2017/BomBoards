@@ -1,6 +1,6 @@
 <%= form_for @comment do |f| %>
   <p>
-    <%= f.label :game_comment_form, "Comment on this Game:" %><br>
+    <%= f.label :collection_comment_form, "Comment on this Collection:" %><br>
     <%= f.text_field :body %>
     <%= f.hidden_field :commentable_id, :value => target.id %>
     <%= f.hidden_field :commentable_type, :value => target.class %>

@@ -5,12 +5,16 @@ Duration: <%= @game.playtime %> minutes <br>
 <%= @game.description %>
 <p>
 
-<%= render 'games/form', :target => @game %>
+<br>
+<% if user_signed_in? %>
+  <%= render 'games/form', :target => @game %>
+<% end %>
 
 <% if @game.comments %>
 <ul>
+  <!-- will need conversion of time zone for stringified time -->
   <% @game.comments.each do |comment| %>
-    <li><%= comment.body %></li>
+    <li><%= comment.body %> - <%= comment.user.username %> -  <%= comment.created_at.strftime("%l:%M %p - %e, %b %Y") %></li>
   <% end %>
 </ul>
 <% end %>
