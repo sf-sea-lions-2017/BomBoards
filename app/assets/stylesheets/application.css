@@ -80,7 +80,7 @@ a:clicked {
 }
 
 .dropbtn {
-    background-color: #FAFAFA;
+    background-color: #0080ff;
     color: black;
     /*padding: 12px;*/
     font-size: 12px;
@@ -120,11 +120,15 @@ a:clicked {
     background-color: #FAFAFA;
 }
   
-  .featured {
+.featured {
 	font-size: 16px;
 }
 
 .featured-title {
 	font-size: 20px;
 	font-style: bold;
+}
+
+.sortbar{
+	background-color: #0080ff;
 }

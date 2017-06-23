@@ -1,8 +1,9 @@
 <% if comments %>
   <% comments.each do |comment| %>
-    <li><%= comment.body %> - <%= comment.user.username %> -  <%= comment.created_at.strftime("%l:%M %p - %e, %b %Y") %>
+    <li><p><%= comment.body %></p><%= comment.user.username %> | <%= comment.created_at.strftime("%l:%M %p - %e, %b %Y") %>
     <% if comment.user == current_user %>
-      <%= link_to('Edit', edit_comment_path(comment.id)) %>
+      | <%= link_to('Edit', edit_comment_path(comment.id)) %>
+      | <%= link_to('Delete', comment_path(comment.id), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } ) %>
     <% end %>
     </li>
   <% end %>
