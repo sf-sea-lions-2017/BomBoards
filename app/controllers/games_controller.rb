@@ -1,8 +1,19 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all
-    @user = User.all
-    @tags = Tag.all
+      @user = User.all
+      @tags = Tag.all
+      @games = Game.all
+
+      p "hurray" * 10
+      p params
+    if params[:sort] && { :sort =>"owned" }
+ 
+      p '*' * 30
+
+      @sorted_games = @games.sort_by {|game| game.number_of_owners}.reverse
+    else       
+      @sorted_games = @games.sort_by {|game| game.likes}.reverse   
+    end
   end
 
   def new
