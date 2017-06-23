@@ -82,3 +82,12 @@ a:link {
 a:clicked {
 	color: #00008B;
 }
+
+.featured {
+	font-size: 16px;
+}
+
+.featured-title {
+	font-size: 20px;
+	font-style: bold;
+}

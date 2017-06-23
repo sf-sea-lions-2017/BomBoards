@@ -2,8 +2,7 @@ class GamesController < ApplicationController
   def index
     @games = Game.all
     @user = User.all
-
-
+    
   end
 
   def new
