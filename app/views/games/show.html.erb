@@ -5,14 +5,22 @@
 <% elsif current_user.games.include?(@game) %>
   <p>You already own <%= @game.name %></p><br><br>
 <% end %>
+<span class='game-show-headline'><b><%= @game.name %></b> - <%= @game.likes %> likes</span>
+<% if @game.tags.any? %>
+	<% @game.tags.each do |tag| %>
+		<span class='tag'><%= tag.name %></span>
+	<% end %>
+<% end %>
+<p></p>
+
 
 Players: <%= @game.number_of_players %> players <br>
 Duration: <%= @game.playtime %> minutes <br>
 <p>
 <%= @game.description %>
 <p>
+
 <% if user_signed_in? %>
-  <%= render 'games/form', :target => @game %>
   <%= link_to 'Like this Game', votes_path(votable_id: @game.id, votable_type: @game.class), method: :post  %>
 <% else %>
   <p>Please log in to like or comment on this game</p>
@@ -26,3 +34,6 @@ Duration: <%= @game.playtime %> minutes <br>
 </ul>
 <% end %>
 
+<% if user_signed_in? %>
+  <%= render 'games/form', :target => @game %>
+<% end %>
