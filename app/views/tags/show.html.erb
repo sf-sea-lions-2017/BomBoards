@@ -1,0 +1,9 @@
+<% if !@tag.games %>
+	<span class='headline'>Sorry, there are no games tagged with that label.</span>
+<% else %>	
+	<% @tag.games.each do |game| %>
+		<span class='headline'><%= game.name %></span><br>
+		<span class='detail'><%= game.description %></span>
+		<hr>
+	<% end %>
+<% end %>

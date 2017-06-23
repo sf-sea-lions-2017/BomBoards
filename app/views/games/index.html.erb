@@ -1,20 +1,31 @@
 <div class='page-wrapper'>
+
+  <div class="dropdown">
+    <button class="dropbtn"><strong>View by Tag</strong></button>
+    <div class="dropdown-content">
+       <% @tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag.id) %>
+      <% end %>
+    </div>
+  </div>
+
+
   <div class='section'>
-  <h2>Most Popular Games</h2>
-    <% sorted_games = @games.sort_by {|game| game.number_of_owners}.reverse %>
-    <% sorted_games.each do |game| %>
-   <a href="/games/<%= game.id %>" class='headline'><%= game.name %></a><span class='owners-head'>&nbsp; &nbsp;<%= game.number_of_owners %> owners</span><br>
-      
-      <div class='detail'>
-        <div>
-          Top Owners:
-          <% game.owners.each do |owner| %>
-          <span class='detail'><a href="/users/<%= owner.id %>"><%= owner.username %></a>   </span>
-          <% end %>  
-        </div>
-      </div>    
-      </p>
-    <% end %>
+    <h2>Most Popular Games</h2>
+      <% sorted_games = @games.sort_by {|game| game.number_of_owners}.reverse %>
+      <% sorted_games.each do |game| %>
+     <a href="/games/<%= game.id %>" class='headline'><%= game.name %></a><span class='owners-head'>&nbsp; &nbsp;<%= game.number_of_owners %> owners</span><br>
+        
+        <div class='detail'>
+          <div>
+            Top Owners:
+            <% game.owners.each do |owner| %>
+            <span class='detail'><a href="/users/<%= owner.id %>"><%= owner.username %></a>   </span>
+            <% end %>  
+          </div>
+        </div>    
+        
+      <% end %>
   </div>
 
 
