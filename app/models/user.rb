@@ -42,8 +42,14 @@ class User < ApplicationRecord
     self.ratings.count
   end
 
+  def friends_with_game(game)
+    friends_with_game = []
+    self.friends.each do |friend|
+      if friend.games.include?(game)
+        friends_with_game << friend
+      end
+    end
+    return friends_with_game
+  end
 end
 
-# def self.collection_rating
-#   self.ratings.count
-# end

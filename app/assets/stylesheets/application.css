@@ -17,7 +17,6 @@
 	font-color: #333333;
 	border-bottom: 3px solid;
 	border-bottom-color: #004B9D;
-
 }
 
 .header-font{
@@ -34,15 +33,12 @@
 }
 
 .container{
-
 	margin-left: 80px;
 	margin-right: 80px;
 	font-family: helvetica;
 	background-color: #FAFAFA;
 	max-width: 60%;
 	margin: auto;
-
-
 }
 
 .section{
@@ -122,3 +118,13 @@ a:clicked {
 
 .dropdown:hover .dropbtn {
     background-color: #FAFAFA;
+}
+  
+  .featured {
+	font-size: 16px;
+}
+
+.featured-title {
+	font-size: 20px;
+	font-style: bold;
+}

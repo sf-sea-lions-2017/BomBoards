@@ -12,14 +12,6 @@ class UsersController < ApplicationController
     @comment = Comment.new
   end
 
-  # def edit
-  #
-  # end
-  #
-  # def update
-  #
-  # end
-
   def destroy
 
   end
@@ -32,9 +24,4 @@ class UsersController < ApplicationController
 
   end
 
-  def add_friend
-    # @friend = FriendRequest.new(params[..blah])
-    # @friend.approved = true
-
-  end
 end
