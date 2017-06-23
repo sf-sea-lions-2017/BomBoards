@@ -1,3 +1,4 @@
+
 <span class='headline'><%= @game.name %></span><br>
 <% if @game.tags.any? %>
 	<% @game.tags.each do |tag| %>
@@ -5,13 +6,20 @@
 	<% end %>
 <% end %>
 <p></p>
+
+<h2><%= @game.name %> - <%= @game.likes %> likes</h2>
+
 Players: <%= @game.number_of_players %> players <br>
 Duration: <%= @game.playtime %> minutes <br>
 <p>
 <%= @game.description %>
 <p>
-
-<%= render 'games/form', :target => @game %>
+<% if user_signed_in? %>
+  <%= render 'games/form', :target => @game %>
+  <%= link_to 'Like this Game', votes_path(votable_id: @game.id, votable_type: @game.class), method: :post  %>
+<% else %>
+  <p>Please log in to like or comment on this game</p>
+<% end %>
 
 <% if @game.comments %>
 <ul>
@@ -20,3 +28,4 @@ Duration: <%= @game.playtime %> minutes <br>
   <% end %>
 </ul>
 <% end %>
+
