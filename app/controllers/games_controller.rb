@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   def index
     @games = Game.all
     @user = User.all
-    @underdogs = Game.sort_by {|game| game}
+
 
   end
 
