@@ -5,8 +5,10 @@ class VotesController < ApplicationController
     else
       @vote = current_user.own_votes.new(votable_id: params[:votable_id], votable_type: params[:votable_type])
       if @vote.save
-        p "yay"
         flash[:notice] = "Succesfully liked"
+        redirect_back(fallback_location: root_path)
+      else
+        flash[:notice] = "Failed to like"
         redirect_back(fallback_location: root_path)
       end
     end
@@ -26,4 +28,5 @@ class VotesController < ApplicationController
     end
 
 end
+
 
