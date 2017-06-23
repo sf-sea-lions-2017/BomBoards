@@ -1,4 +1,4 @@
-<span class='game-show-headline'><b><%= @game.name %></b> - <%= @game.likes %> likes</span>
+<span class='game-show-headline'><img src=<%= @game.image_link%> style="width:25%;height:25%;"><b><%= @game.name %></b> - <%= @game.likes %> likes</span>
 <% if @game.tags.any? %>
   <% @game.tags.each do |tag| %>
     <span class='tag'><%= tag.name %></span>

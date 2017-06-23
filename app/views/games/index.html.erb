@@ -3,13 +3,15 @@
     <span class='featured'>Featured Game of the Moment:</span>
     <% @underdogs = @games.sort_by {|game| game.votes.size} %>
     <% @featured_underdog = @underdogs[0..2].sample %>
-    <span class='featured-title'><a href="/games/<%= @featured_underdog.id %>"><%= @featured_underdog.name %></a></span>
+    <span class='featured-title'><a href="/games/<%= @featured_underdog.id %>"><%= @featured_underdog.name %><img src=<%= @featured_underdog.image_link %> style="width:12%;height:12%;"></a></span>
   </div>
   <div class='section'>
   <h2>Most Popular Games</h2>
     <% sorted_games = @games.sort_by {|game| game.number_of_owners}.reverse %>
     <% sorted_games.each do |game| %>
-   <a href="/games/<%= game.id %>" class='headline'><%= game.name %></a><span class='owners-head'>&nbsp; &nbsp;<%= game.number_of_owners %> owners</span><br>
+      <a href="/games/<%= game.id %>" class='headline'>
+      <img src=<%= game.image_link%> style="width:10%;height:10%;">
+      <%= game.name %></a><span class='owners-head'>&nbsp; &nbsp;<%= game.number_of_owners %> owners</span><br>
       
       <div class='detail'>
         <div>
@@ -32,5 +34,3 @@
     <% end %>
   </div>
 </div>
-
-
