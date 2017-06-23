@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20170623190340) do
   create_table "events", force: :cascade do |t|
     t.bigint "host_id"
     t.bigint "played_game_id"
-    t.string "title"
-    t.string "location"
-    t.datetime "date"
+    t.string "title", null: false
+    t.string "location", null: false
+    t.datetime "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["host_id"], name: "index_events_on_host_id"
