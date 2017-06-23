@@ -16,6 +16,4 @@ class Game < ApplicationRecord
     self.votes.count
   end
 
-
-
 end

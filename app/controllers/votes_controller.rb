@@ -1,7 +1,5 @@
 class VotesController < ApplicationController
   def create
-    p "=" * 80
-    p voted_for?
     if voted_for?
       flash[:notice] = "You already like this game"
     else
