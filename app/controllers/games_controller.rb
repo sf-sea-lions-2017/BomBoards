@@ -6,6 +6,12 @@ class GamesController < ApplicationController
     day = DateTime.now.day #returns a number
     underdogs = @games.sort_by {|game| game.likes}
     @featured_underdog = underdogs[day % 3]
+
+    if params[:sort] && { :sort =>"owned" }
+      @sorted_games = @games.sort_by {|game| game.number_of_owners}.reverse
+    else       
+      @sorted_games = @games.sort_by {|game| game.likes}.reverse   
+    end
   end
 
   def new
