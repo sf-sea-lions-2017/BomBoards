@@ -37,7 +37,7 @@ class FriendshipsController < ApplicationController
   private
 
     def friends?
-      Friendship.find_by(user: current_user, friend_id: params[:friend_id]) || Friendship.find_by(user_id: params[:friend_id], friend: current_user).where(accepted: true)
+      Friendship.find_by(user: current_user, friend_id: params[:friend_id]) || Friendship.find_by(user_id: params[:friend_id], friend: current_user)
     end
 
 end
