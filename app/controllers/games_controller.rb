@@ -1,15 +1,13 @@
 class GamesController < ApplicationController
   def index
-      @user = User.all
-      @tags = Tag.all
-      @games = Game.all
+    @games = Game.all
+    @user = User.all
+    @tags = Tag.all
+    day = DateTime.now.day #returns a number
+    underdogs = @games.sort_by {|game| game.likes}
+    @featured_underdog = underdogs[day % 3]
 
-      p "hurray" * 10
-      p params
     if params[:sort] && { :sort =>"owned" }
- 
-      p '*' * 30
-
       @sorted_games = @games.sort_by {|game| game.number_of_owners}.reverse
     else       
       @sorted_games = @games.sort_by {|game| game.likes}.reverse   
@@ -28,4 +26,3 @@ class GamesController < ApplicationController
   end
 
 end
-
