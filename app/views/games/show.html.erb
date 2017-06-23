@@ -20,6 +20,11 @@ Duration: <%= @game.playtime %> minutes <br>
 <%= @game.description %>
 <p>
 
+
+<br>
+<% if user_signed_in? %>
+  <%= render 'games/form', :target => @game %>
+<% end %>
 <% if user_signed_in? %>
   <%= link_to 'Like this Game', votes_path(votable_id: @game.id, votable_type: @game.class), method: :post  %>
 <% else %>
@@ -28,8 +33,9 @@ Duration: <%= @game.playtime %> minutes <br>
 
 <% if @game.comments %>
 <ul>
+  <!-- will need conversion of time zone for stringified time -->
   <% @game.comments.each do |comment| %>
-    <li><%= comment.body %></li>
+    <li><%= comment.body %> - <%= comment.user.username %> -  <%= comment.created_at.strftime("%l:%M %p - %e, %b %Y") %></li>
   <% end %>
 </ul>
 <% end %>
