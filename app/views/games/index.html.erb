@@ -1,11 +1,11 @@
 <div class='page-wrapper'>
 
 <div class='sortbar'>
-
+<br>
   <%= link_to "Popular", games_path %>
-
+  &nbsp &nbsp  &nbsp &nbsp
   <%= link_to "Most Owners", games_path(:sort => "owned") %>
-
+  &nbsp &nbsp  &nbsp &nbsp
   <div class="dropdown">
     <button class="dropbtn"><strong>View by Tag</strong></button>
     <div class="dropdown-content">
@@ -14,12 +14,13 @@
       <% end %>
     </div>
   </div>
-
+<br>
+<br>
 </div>
 
 
-    <span class='featured'>Featured Game of the Day:</span>
-    <span class='featured-title'><a href="/games/<%= @featured_underdog.id %>"><%= @featured_underdog.name %><img src=<%= @featured_underdog.image_link %> style="width:12%;height:12%;"></a></span>
+    <span class='featured'>Featured Game of the Day:&nbsp</span>
+    <span class='featured-title'><a href="/games/<%= @featured_underdog.id %>"><%= @featured_underdog.name %><span class="graphic"><img src=<%= @featured_underdog.image_link %> width="35%" height="35%"></span></a></span>
 
   </div>
   <div class='section'>
