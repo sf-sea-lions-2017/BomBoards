@@ -1,4 +1,14 @@
+
+<span class='headline'><%= @game.name %></span><br>
+<% if @game.tags.any? %>
+	<% @game.tags.each do |tag| %>
+		<span class='tag'><%= tag.name %></span>
+	<% end %>
+<% end %>
+<p></p>
+
 <h2><%= @game.name %> - <%= @game.likes %> likes</h2>
+
 Players: <%= @game.number_of_players %> players <br>
 Duration: <%= @game.playtime %> minutes <br>
 <p>
