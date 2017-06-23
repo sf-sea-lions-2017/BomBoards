@@ -30,6 +30,9 @@ class User < ApplicationRecord
 
   has_many :hosted_events, class_name: 'Event', foreign_key: "host_id"
 
+  has_many :reservations, foreign_key: 'attendee_id'
+  has_many :parties_to_attend, through: :reservations,  source: 'event'
+
 
   #gets all friends
   def friends

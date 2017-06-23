@@ -9,7 +9,7 @@ class Game < ApplicationRecord
   has_many :votes, as: :votable
   has_many :comments, as: :commentable
 
-  has_many :events, foreign_key: 'played_game_id'
+  has_many :events, class_name: 'Event', foreign_key: 'played_game_id'
 
   validates :name, :description, :number_of_players, :playtime, presence: true
 
