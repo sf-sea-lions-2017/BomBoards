@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 20170623140727) do
     t.string "playtime", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_link"
     t.string "buy_link"
+    t.string "image_link"
   end
 
   create_table "ownerships", force: :cascade do |t|
