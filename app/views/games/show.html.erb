@@ -1,11 +1,12 @@
-<h2><%= @game.name %> - <%= @game.likes %> likes</h2>
-
 <span class='game-show-headline'><b><%= @game.name %></b> - <%= @game.likes %> likes</span>
 <% if @game.tags.any? %>
   <% @game.tags.each do |tag| %>
     <span class='tag'><%= tag.name %></span>
+  <% end %>
 <% end %>
 <br>
+
+
 <% if !user_signed_in? %>
   <p>Please sign in to add this game to your collection</p>
 <% elsif !current_user.games.include?(@game) && user_signed_in? %>
