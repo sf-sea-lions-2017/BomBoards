@@ -17,6 +17,7 @@ users_needed.times do
 end
 
 
+
 Game.find_or_create_by(name: "Settlers of Catan", number_of_players: "3 - 6" , playtime: "60 - 75", description: "Picture yourself in the era of discoveries: after a long voyage of great deprivation, your ships have finally reached the coast of an uncharted island. Its name shall be Catan! But you are not the only discoverer. Other fearless seafarers have also landed on the shores of Catan: the race to settle the island has begun!")
 Game.find_or_create_by(name: "Risk", number_of_players: "2 - 6" , playtime: "120", description: "Risk is a strategy board game of diplomacy, conflict and conquest for two to six players. The standard version is played on a board depicting a political map of the earth, divided into forty-two territories, which are grouped into six continents. ... Players may form and dissolve alliances during the course of the game.")
 Game.find_or_create_by(name: "Clue", number_of_players: "3 - 6" , playtime: "45", description: "It was devised by Anthony E. Pratt, a so. ly move around the game board (a mansion), as of one of the game's six suspects (or, collecting clues from which to deduce which suspect murdered the game's perpetual victim: Mr. Boddy (Dr. Black, outside of U.S.), and with which weapon and in what room.")
@@ -29,11 +30,41 @@ Game.find_or_create_by(name: "Mastermind", number_of_players: "2" , playtime: "2
 Game.find_or_create_by(name: "Uno", number_of_players: "2 - 10" , playtime: "30", description: "Players race to empty their hands and catch opposing players with cards left in theirs, which score points. In turns, players attempt to play a card by matching its color, number, or word to the topmost card on the discard pile. If unable to play, players draw a card from the draw pile, and if still unable to play, they pass their turn. Wild and special cards spice things up a bit.")
 Game.find_or_create_by(name: "Apples to Apples", number_of_players: "4 - 10" , playtime: "30", description: "The party game Apples to Apples consists of two decks of cards: Things and Descriptions. Each round, the active player draws a Description card (which features an adjective like Hairy or Smarmy) from the deck, then the other players each secretly choose the Thing card in hand that best matches that description and plays it face-down on the table. The active player then reveals these cards and chooses the Thing card that, in his opinion, best matches the Description card, which he awards to whoever played that Thing card. This player becomes the new active player for the next round. Once a player has won a pre-determined number of Description cards, that player wins.")
 
-
 max_ownerships = 30
 ownerships_needed = max_ownerships - Ownership.count
-
 
 ownerships_needed.times do
 	Ownership.find_or_create_by(owner: User.all.sample, game: Game.all.sample)
 end
+
+
+Tag.find_or_create_by(name: 'strategy')
+Tag.find_or_create_by(name: 'card game')
+Tag.find_or_create_by(name: 'first-person shooter')
+Tag.find_or_create_by(name: 'family')
+Tag.find_or_create_by(name: 'abstract')
+Tag.find_or_create_by(name: 'collective')
+Tag.find_or_create_by(name: 'adversarial')
+Tag.find_or_create_by(name: 'fantasy')
+Tag.find_or_create_by(name: 'educational')
+Tag.find_or_create_by(name: 'territorial')
+Tag.find_or_create_by(name: 'trivia')
+Tag.find_or_create_by(name: 'train')
+
+g=Game.find_by(id: 1); t=Tag.find_by(id: 1); g.tags << t
+g=Game.find_by(id: 2); t=Tag.find_by(id: 10); g.tags << t
+g=Game.find_by(id: 2); t=Tag.find_by(id: 1); g.tags << t
+g=Game.find_by(id: 3); t=Tag.find_by(id: 4); g.tags << t
+g=Game.find_by(id: 4); t=Tag.find_by(id: 1); g.tags << t
+g=Game.find_by(id: 5); t=Tag.find_by(id: 4); g.tags << t
+g=Game.find_by(id: 6); t=Tag.find_by(id: 3); g.tags << t
+g=Game.find_by(id: 7); t=Tag.find_by(id: 10); g.tags << t
+g=Game.find_by(id: 8); t=Tag.find_by(id: 7); g.tags << t
+g=Game.find_by(id: 9); t=Tag.find_by(id: 5); g.tags << t
+g=Game.find_by(id: 10); t=Tag.find_by(id: 2); g.tags << t
+g=Game.find_by(id: 11); t=Tag.find_by(id: 4); g.tags << t
+
+
+
+
+

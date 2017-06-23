@@ -55,10 +55,17 @@
 	font-size: 18px;
 }
 
+.game-show-headline{
+	font-size: 22px;
+}
+
 .detail{
 	font-size: 14px;
-	
+}
 
+.tag{
+	background-color: #FFAAAA;
+	font-size: 12px;
 }
 
 .page-wrapper{
@@ -74,4 +81,13 @@ a:link {
 
 a:clicked {
 	color: #00008B;
+}
+
+.featured {
+	font-size: 16px;
+}
+
+.featured-title {
+	font-size: 20px;
+	font-style: bold;
 }

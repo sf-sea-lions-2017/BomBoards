@@ -8,19 +8,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    p "*" * 80
-    p comment_params
-    # @game = Game.find(params[:game_id])
     @comment = Comment.new(comment_params)
     if @comment.save
       flash[:notice] = "Comment posted"
       redirect_back(fallback_location: root_path)
     else
-      flash[:error] = "Comment could not be posted"
+      flash[:notice] = "Comment could not be posted"
       redirect_back(fallback_location: root_path)
     end
-    # @comments = Comment.all
-    # @game = @comment.game
   end
 
   # def show
