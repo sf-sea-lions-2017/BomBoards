@@ -16,11 +16,17 @@ class CommentsController < ApplicationController
   end
 
   def edit
-
+    @comment = Comment.find(params[:id])
+    render '_edit_comment_form', :target => @comment
   end
 
   def update
-
+    @comment = Comment.find(params[:id])
+    if @comment.update(params[:comment].permit(:body))
+      @comment.commentable
+      @user = @comment.commentable
+      redirect_to @user
+    end
   end
 
   def destroy
