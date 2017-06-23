@@ -1,7 +1,4 @@
 class CommentsController < ApplicationController
-  # def index
-  #
-  # end
 
   def new
     @comment = Comment.new
@@ -17,10 +14,6 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-
-  # def show
-  #
-  # end
 
   def edit
     @comment = Comment.find(params[:id])
