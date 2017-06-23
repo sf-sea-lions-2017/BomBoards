@@ -1,3 +1,10 @@
+<h2><%= @game.name %> - <%= @game.likes %> likes</h2>
+
+<% if !current_user.games.include?(@game) && user_signed_in? %>
+  <%= link_to 'Own This Game?', ownerships_path(game_id: @game.id), method: :post %><br><br>
+<% elsif current_user.games.include?(@game) %>
+  <p>You already own <%= @game.name %></p><br><br>
+<% end %>
 <span class='game-show-headline'><b><%= @game.name %></b> - <%= @game.likes %> likes</span>
 <% if @game.tags.any? %>
 	<% @game.tags.each do |tag| %>
@@ -5,6 +12,7 @@
 	<% end %>
 <% end %>
 <p></p>
+
 
 Players: <%= @game.number_of_players %> players <br>
 Duration: <%= @game.playtime %> minutes <br>
