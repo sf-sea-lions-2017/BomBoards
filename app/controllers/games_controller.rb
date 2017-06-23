@@ -3,6 +3,9 @@ class GamesController < ApplicationController
     @games = Game.all
     @user = User.all
     @tags = Tag.all
+    day = DateTime.now.day #returns a number
+    underdogs = @games.sort_by {|game| game.likes}
+    @featured_underdog = underdogs[day % 3]
   end
 
   def new
@@ -17,4 +20,3 @@ class GamesController < ApplicationController
   end
 
 end
-
